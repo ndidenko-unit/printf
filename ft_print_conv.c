@@ -20,7 +20,7 @@ int ft_print_conv(char *conv, va_list ap) // парсинг и печать conv
 	// char *hel = va_arg(ap, char*);
 	printf("|\nflag_sharp = %d, flag_zero = %d, flag_minus = %d, flag_plus = %d, flag_space = %d, width =%d, precision = %d, size = %d, letter = %c, len = %d|", 
 	parsing.flag_sharp, parsing.flag_zero, parsing.flag_minus, parsing.flag_plus, parsing.flag_space, parsing.width,parsing.precision, parsing.size, parsing.letter, parsing.len);
-	return (0);
+	return (parsing.len);
 }
 
 void processing_letter(t_parsing *parsing, va_list ap)
@@ -55,14 +55,4 @@ void processing_c(t_parsing *parsing, va_list ap)
 		ft_putchar(c);
 		parsing->len += 1;
 	}
-}
-
-void processing_s(t_parsing *parsing, va_list ap)
-{
-	char *str;
-	int len;
-	str = (char*)va_arg(ap, char*);
-	
-	len = strlen(str);
-
 }

@@ -3,7 +3,6 @@
 size_t	    ft_search_conversion_letter(char *str)
 {
 	size_t	i;
-	char	*result;
 	char    *letter;
 	int x;
 	x = 0;
@@ -28,22 +27,26 @@ size_t	    ft_search_conversion_letter(char *str)
 	return (0);
 }
 
-void ft_myprint(char *str, va_list ap)
+int ft_myprint(char *str, va_list ap)
 {
 	char *conv;
 	size_t result_letter;
+	int len;
 
+	len = 0;
 	while (*str)
 	{
 		if (*str == '%' && *(str + 1) == '%')
 		{
 			ft_putchar('%');
+			len += 1;
 			str += 2;
 			continue;
 		}
 		if (*str != '%') 
 		{
 			ft_putchar(*str++);
+			len += 1;
 			continue; 
 		}
 		if (*str == '%' && *(str + 1) != '%')
@@ -51,10 +54,11 @@ void ft_myprint(char *str, va_list ap)
 			result_letter = ft_search_conversion_letter(str);
 			conv = ft_strsub(str, 0, result_letter);
 			str += (result_letter);
-			ft_print_conv(conv, ap);
+			len += ft_print_conv(conv, ap);
 			continue;
 		}
 	}
+	return (len);
 }
 
 void	ft_struct_init(t_parsing *parsing)
@@ -73,20 +77,21 @@ void	ft_struct_init(t_parsing *parsing)
 
 int ft_printf(char *str, ...)
 {
-	
+	int len;
+
 	va_list ap; /* указывает на очередной безымянный аргумент */ 
 	va_start(ap, str); /* устанавливает ар на 1-й безымянный аргумент */ 
 	
-	ft_myprint(str, ap);
+	len = ft_myprint(str, ap);
 	
 	va_end(ap); /* очистка, когда все сделано */
-	return (0);
+	return (len);
 }
 
 int main()
 {
-	char *str = "AxaxaxaxaxaxaxaxA";
-	ft_printf("I have 5  %12s\n", str);
+	char *str = "Hello";
+	ft_printf("I have 5  %9.6s\n", str);
 	//printf("\nHello, I have % qdqqqq", i);
 	//system ("leaks a.out");
 	return(0);

@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char	*ft_left(char *s, int width, int precision, char c)
+char	*ft_left(char *str, int width, int precision, char c)
 {
 	char	*snew;
 	int		i;
@@ -10,7 +10,7 @@ char	*ft_left(char *s, int width, int precision, char c)
 	while (i < width)
 	{
 		if (i < precision)
-			snew[i] = s[i];
+			snew[i] = str[i];
 		else
 			snew[i] = c;
 		i++;
@@ -18,7 +18,7 @@ char	*ft_left(char *s, int width, int precision, char c)
 	return (snew);
 }
 
-char	*ft_right(char *s, int width, int precision, char c)
+char	*ft_right(char *str, int width, int precision, char c)
 {
 	char	*snew;
 	int		i;
@@ -34,7 +34,7 @@ char	*ft_right(char *s, int width, int precision, char c)
 		if (i < ln_c)
 			snew[i] = c;
 		else
-			snew[i] = s[j++];
+			snew[i] = str[j++];
 		i++;
 	}
 	return (snew);

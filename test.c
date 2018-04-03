@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <wchar.h>
+#include "ft_printf.h"
 
 int main()
 {
-   
+
   char *i = "hello";  
-  printf("%#12s", i);
+  ft_printf("\n%%%-3.4s", i);
+
 
  
   return (0);

@@ -4,6 +4,7 @@ int ft_parse_flags(char *conv, t_parsing *parsing)
 {
 	int count;
 
+	count = 0;
 	conv += 1; //смещаем указатель с % на след символ
 	while (ft_valid_flag(*conv))
 	{
@@ -61,7 +62,7 @@ int ft_parse_precision(char *conv, t_parsing *parsing)
 			ptr = conv + 1;
 		conv++;
 	}
-	if (*conv == 0)
+	if (*ptr == 0)
 		return(0);
 	ptr2 = ptr;
 	while (ft_is_digit(*ptr))

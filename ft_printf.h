@@ -32,10 +32,11 @@ typedef struct	s_parsing
     int     len;
 } 				t_parsing;
 
+int ft_printf(char *str, ...);
 int ft_print_conv(char *conv, va_list ap);
 
 size_t	    ft_search_conversion_letter(char *str);
-void ft_myprint(char *str, va_list ap);
+int ft_myprint(char *str, va_list ap);
 void	ft_struct_init(t_parsing *parsing);
 int ft_printf(char *str, ...);
 int ft_validconv(char *conv);
@@ -50,6 +51,8 @@ int ft_parse_size(char *conv, t_parsing *parsing);
 void processing_c(t_parsing *parsing, va_list ap);
 void processing_letter(t_parsing *parsing, va_list ap);
 void processing_s(t_parsing *parsing, va_list ap);
+char*	processing_s_m1(t_parsing *parsing, char *str, int len);
+char*	processing_s_m0(t_parsing *parsing, char *str, int len);
 
 char	*ft_left(char *s, int width, int precision, char c);
 char	*ft_right(char *s, int width, int precision, char c);
