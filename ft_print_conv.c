@@ -14,10 +14,10 @@ int ft_print_conv(char *conv, va_list ap) // парсинг и печать conv
 	ft_parse_width(conv, &parsing);
 	ft_parse_precision(conv, &parsing);
 	ft_parse_size(conv, &parsing);
-	ft_putstr("|||valid conv|||");
+	// ft_putstr("|||valid conv|||");
 	processing_letter(&parsing, ap);
-	printf("|\nflag_sharp = %d, flag_zero = %d, flag_minus = %d, flag_plus = %d, flag_space = %d, width =%d, precision = %d, size = %d, letter = %c, len = %d|", 
-	parsing.flag_sharp, parsing.flag_zero, parsing.flag_minus, parsing.flag_plus, parsing.flag_space, parsing.width,parsing.precision, parsing.size, parsing.letter, parsing.len);
+	// printf("|\nflag_sharp = %d, flag_zero = %d, flag_minus = %d, flag_plus = %d, flag_space = %d, width =%d, precision = %d, size = %d, letter = %c, len = %d|", 
+	// parsing.flag_sharp, parsing.flag_zero, parsing.flag_minus, parsing.flag_plus, parsing.flag_space, parsing.width,parsing.precision, parsing.size, parsing.letter, parsing.len);
 	return (parsing.len);
 }
 
@@ -30,29 +30,4 @@ void processing_letter(t_parsing *parsing, va_list ap)
 		processing_s(parsing, ap);
 	else if (parsing->letter == 'd' || parsing->letter == 'D' || parsing->letter == 'i')
 		processing_d(parsing, ap);
-}
-
-void processing_c(t_parsing *parsing, va_list ap)
-{
-	char c;
-	char *res;
-	c = (char)va_arg(ap, int);
-
-	if (parsing->flag_minus == 1 && parsing->width > 0)
-	{
-		res = ft_left(&c, parsing->width, 1, ' ');
-		ft_putstr(res);
-		parsing->len += ft_strlen(res);
-	}
-	else if (parsing->flag_minus == 0 && parsing->width > 0)
-	{
-		res = ft_right(&c, parsing->width, 1, ' ');
-		ft_putstr(res);
-		parsing->len += ft_strlen(res);
-	}
-	else
-	{
-		ft_putchar(c);
-		parsing->len += 1;
-	}
 }

@@ -51,6 +51,7 @@ int ft_parse_precision(char *conv, t_parsing *parsing);
 int ft_parse_size(char *conv, t_parsing *parsing);
 
 void processing_c(t_parsing *parsing, va_list ap);
+int processing_c_0(int width);
 void processing_letter(t_parsing *parsing, va_list ap);
 
 void processing_s(t_parsing *parsing, va_list ap);

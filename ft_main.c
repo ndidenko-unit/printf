@@ -88,12 +88,13 @@ int ft_printf(char *str, ...)
 	return (len);
 }
 
-int main()
-{
-	// char *str = "Hello";
-	int i = 42;
-	ft_printf("I have 5 %4.15d\n", i);
-	//printf("\nHello, I have % qdqqqq", i);
-	//system ("leaks a.out");
-	return(0);
-}
+// int main()
+// {
+
+	
+// 	ft_printf("%2c", 0);
+	
+// 	//printf("\nHello, I have % qdqqqq", i);
+// 	//system ("leaks a.out");
+// 	return(0);
+// }

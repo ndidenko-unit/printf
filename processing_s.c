@@ -34,7 +34,7 @@ char*	processing_s_m1(t_parsing *parsing, char *str, int len)
 		return(str);
 	else if (parsing->width <= len && parsing->precision <= len)
 		return(ft_left(str, parsing->precision, parsing->precision, ' '));
-	else if (parsing->width > len && parsing->precision >= len)
+	else if (parsing->width > len && (parsing->precision >= len || parsing->precision == 0))
 		return(ft_left(str, parsing->width, len, ' '));
 	else if (parsing->width > len && parsing->precision < len)
 		return(ft_left(str, parsing->width, parsing->precision, ' '));
@@ -50,7 +50,7 @@ char*	processing_s_m0(t_parsing *parsing, char *str, int len)
 		return(str);
 	else if (parsing->width <= len && parsing->precision <= len)
 		return(ft_right(str, parsing->precision, parsing->precision, ' '));
-	else if (parsing->width > len && parsing->precision >= len)
+	else if (parsing->width > len && (parsing->precision >= len || parsing->precision == 0))
 		return(ft_right(str, parsing->width, len, ' '));
 	else if (parsing->width > len && parsing->precision < len)
 		return(ft_right(str, parsing->width, parsing->precision, ' '));

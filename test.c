@@ -5,8 +5,8 @@
 int main()
 {
 
-  int i = -5;  
-  printf("\n%%%-3.4lld", i);
+  char c = 0;  
+  printf("\n|||%-2c|||\n", c);
 
 
  

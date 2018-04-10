@@ -56,22 +56,24 @@ int ft_parse_precision(char *conv, t_parsing *parsing)
 	char *precision;
 
 	count = 0;
+	ptr = 0;
 	while (*conv)
 	{
 		if (*conv == '.' && ft_is_digit(*(conv + 1)))
 			ptr = conv + 1;
 		conv++;
 	}
-	if (*conv == 0)
-		return(0);
-	ptr2 = ptr;
-	while (ft_is_digit(*ptr))
+	if (ptr != 0)
 	{
-		ptr++;
-		count++;
+		ptr2 = ptr;
+		while (ft_is_digit(*ptr))
+		{
+			ptr++;
+			count++;
+		}
+		precision = ft_strsub(ptr2, 0, count);
+		parsing->precision = ft_atoi(precision);
 	}
-	precision = ft_strsub(ptr2, 0, count);
-	parsing->precision = ft_atoi(precision);
 	return(0);
 }
 
