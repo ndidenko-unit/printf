@@ -90,8 +90,9 @@ int ft_printf(char *str, ...)
 
 int main()
 {
-	char *str = "Hello";
-	ft_printf("I have 5  %9.6s\n", str);
+	// char *str = "Hello";
+	int i = 42;
+	ft_printf("I have 5 %4.15d\n", i);
 	//printf("\nHello, I have % qdqqqq", i);
 	//system ("leaks a.out");
 	return(0);

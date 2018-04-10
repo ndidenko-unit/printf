@@ -16,8 +16,6 @@ int ft_print_conv(char *conv, va_list ap) // парсинг и печать conv
 	ft_parse_size(conv, &parsing);
 	ft_putstr("|||valid conv|||");
 	processing_letter(&parsing, ap);
-	// int num = va_arg(ap, int);
-	// char *hel = va_arg(ap, char*);
 	printf("|\nflag_sharp = %d, flag_zero = %d, flag_minus = %d, flag_plus = %d, flag_space = %d, width =%d, precision = %d, size = %d, letter = %c, len = %d|", 
 	parsing.flag_sharp, parsing.flag_zero, parsing.flag_minus, parsing.flag_plus, parsing.flag_space, parsing.width,parsing.precision, parsing.size, parsing.letter, parsing.len);
 	return (parsing.len);
@@ -30,6 +28,8 @@ void processing_letter(t_parsing *parsing, va_list ap)
 		processing_c(parsing, ap);
 	else if (parsing->letter == 's' && parsing->size != 2)
 		processing_s(parsing, ap);
+	else if (parsing->letter == 'd' || parsing->letter == 'D' || parsing->letter == 'i')
+		processing_d(parsing, ap);
 }
 
 void processing_c(t_parsing *parsing, va_list ap)

@@ -62,7 +62,7 @@ int ft_parse_precision(char *conv, t_parsing *parsing)
 			ptr = conv + 1;
 		conv++;
 	}
-	if (*ptr == 0)
+	if (*conv == 0)
 		return(0);
 	ptr2 = ptr;
 	while (ft_is_digit(*ptr))

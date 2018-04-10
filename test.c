@@ -5,8 +5,8 @@
 int main()
 {
 
-  char *i = "hello";  
-  ft_printf("\n%%%-3.4s", i);
+  int i = -5;  
+  printf("\n%%%-3.4lld", i);
 
 
  
