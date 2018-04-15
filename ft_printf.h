@@ -33,6 +33,7 @@ typedef struct	s_parsing
 } 				t_parsing;
 
 char			*ft_itoa_max(intmax_t n);
+char				*ft_itoa_base(uintmax_t n, int base);
 
 int ft_printf(char *str, ...);
 int ft_print_conv(char *conv, va_list ap);
@@ -55,8 +56,6 @@ int processing_c_0(int width);
 void processing_letter(t_parsing *parsing, va_list ap);
 
 void processing_s(t_parsing *parsing, va_list ap);
-char*	processing_s_m1(t_parsing *parsing, char *str, int len);
-char*	processing_s_m0(t_parsing *parsing, char *str, int len);
 
 void processing_d(t_parsing *parsing, va_list ap);
 char		*ft_make_str_d(char *str, t_parsing *parsing, intmax_t n);
@@ -66,6 +65,12 @@ char	*ft_d2_2(char *str, t_parsing *parsing, int len, intmax_t nbr);
 char	*ft_d3(char *str, t_parsing *parsing, int len, intmax_t nbr);
 char	*ft_d3_1(char *str, t_parsing *parsing, int len);
 char	*ft_d4(char *str, t_parsing *parsing, int len,  intmax_t nbr);
+
+void processing_u(t_parsing *parsing, va_list ap);
+char		*ft_make_str_u(char *str, t_parsing *parsing, uintmax_t nbr);
+
+void processing_o(t_parsing *parsing, va_list ap);
+char		*ft_make_str_o(char *str, t_parsing *parsing, uintmax_t nbr);
 
 char	*ft_left(char *s, int width, int precision, char c);
 char	*ft_right(char *s, int width, int precision, char c);

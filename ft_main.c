@@ -92,9 +92,9 @@ int ft_printf(char *str, ...)
 // {
 
 	
-// 	ft_printf("%2c", 0);
-	
-// 	//printf("\nHello, I have % qdqqqq", i);
-// 	//system ("leaks a.out");
+// 	ft_printf("\n%o", 42);
+// 	printf("\n%o", 42);
+// // 	//printf("\nHello, I have % qdqqqq", i);
+// // 	//system ("leaks a.out");
 // 	return(0);
 // }

@@ -6,7 +6,7 @@ int main()
 {
 
   char c = 0;  
-  printf("\n|||%-2c|||\n", c);
+  printf("%hhd", 129);
 
 
  

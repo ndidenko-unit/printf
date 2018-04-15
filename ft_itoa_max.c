@@ -46,3 +46,39 @@ char			*ft_itoa_max(intmax_t n)
 		str[0] = '-';
 	return (str);
 }
+
+static	size_t		len_nbr_base(uintmax_t n, int base)
+{
+	size_t len;
+
+	len = 0;
+	if (n == 0)
+		return (1);
+	while (n != 0)
+	{
+		n = n / base;
+		len++;
+	}
+	return (len);
+}
+
+char				*ft_itoa_base(uintmax_t n, int base)
+{
+	int				len;
+	char			*str;
+
+	len = len_nbr_base(n, base);
+	str = ft_strnew(len);
+	if (!str)
+		return (0);
+	while (len)
+	{
+		if (n % base >= 10)
+			str[len - 1] = (n % base - 10) + 'a';
+		else
+			str[len - 1] = (n % base) + '0';
+		n = n / base;
+		len--;
+	}
+	return (str);
+}

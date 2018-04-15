@@ -1,7 +1,8 @@
 NAME = libftprintf.a
 
 FILE_C = ft_main.c ft_print_conv.c parsing.c processing_s.c processing_c.c\
-		left_right.c processing_d.c check.c libft/ft_atoi.c \
+		left_right.c processing_u.c processing_u_1.c processing_d.c \
+		processing_d_1.c processing_o.c processing_o_1.c check.c libft/ft_atoi.c \
 		libft/ft_putchar.c libft/ft_putstr.c \
 		libft/ft_strchr.c libft/ft_strdel.c \
 		libft/ft_strlen.c libft/ft_strnew.c \
