@@ -34,4 +34,8 @@ void processing_letter(t_parsing *parsing, va_list ap)
 		processing_u(parsing, ap);
 	else if (parsing->letter == 'o' || parsing->letter == 'O')
 		processing_o(parsing, ap);
+	else if (parsing->letter == 'x' || parsing->letter == 'X')
+		processing_x(parsing, ap);
+	else if (parsing->letter == 'p')
+		processing_p(parsing, ap);
 }

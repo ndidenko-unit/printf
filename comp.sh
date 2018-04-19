@@ -1,0 +1,1 @@
+gcc -g check.c ft_itoa_max.c ft_main.c ft_print_conv.c left_right.c parsing.c processing_c.c processing_d.c processing_d_1.c processing_o.c processing_o_1.c processing_s.c processing_u.c processing_u_1.c processing_x.c processing_x_1.c processing_x_2.c processing_x_3.c processing_p.c libft/libft.a

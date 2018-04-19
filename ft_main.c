@@ -90,10 +90,10 @@ int ft_printf(char *str, ...)
 
 // int main()
 // {
-
+// 	int *ptr = 0; // не работает с нулевым поинтером
 	
-// 	ft_printf("\n%o", 42);
-// 	printf("\n%o", 42);
+// 	ft_printf("\n%p", ptr);
+// 	printf("\n%p", ptr);
 // // 	//printf("\nHello, I have % qdqqqq", i);
 // // 	//system ("leaks a.out");
 // 	return(0);

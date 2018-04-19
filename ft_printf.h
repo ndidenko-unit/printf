@@ -72,6 +72,13 @@ char		*ft_make_str_u(char *str, t_parsing *parsing, uintmax_t nbr);
 void processing_o(t_parsing *parsing, va_list ap);
 char		*ft_make_str_o(char *str, t_parsing *parsing, uintmax_t nbr);
 
+void processing_x(t_parsing *parsing, va_list ap);
+char		*ft_make_str_x(char *str, t_parsing *parsing, uintmax_t nbr);
+char         *ft_x2(char *str, t_parsing *parsing, int len, uintmax_t nbr);
+char         *ft_x3(char *str, t_parsing *parsing, int len);
+
+void processing_p(t_parsing *parsing, va_list ap);
+
 char	*ft_left(char *s, int width, int precision, char c);
 char	*ft_right(char *s, int width, int precision, char c);
 
