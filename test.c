@@ -2,31 +2,35 @@
 #include <wchar.h>
 #include "ft_printf.h"
 
-char  *ft_strtoupper(char *str)
+int  ft_2to10(char *bin)
 {
-	char *new;
-	char *ptr;
-	new = ft_strnew(ft_strlen(str));
-	ptr = new;
-	while(*str)
+	int step;
+	int sum;
+	int bit;
+
+	if (!bin)
+		return(0);
+	step = 0;
+	sum = 0;
+	bit = 1;
+	while (*bin++)
+		step++;
+	bin -= 2;
+	while (step != 0)
 	{
-		if (*str >= 'a' && *str <= 'z')
-			*new = *str - 32;
-		else
-			*new = *str;
-		new++;
-		str++;
+		if (*bin == '1')
+			sum += bit;
+		bit *= 2;
+		bin--;
+		step--;
 	}
-	return (ptr);
+	return(sum);
 }
 
 int main()
 {
 
-	int i = 0;
-	char *str = "abcdefg5";
-	str = ft_strtoupper(str);
-	printf("%s", str);
+	printf("%d\n", ft_2to10("0000001010"));
 
 
  

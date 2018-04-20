@@ -23,7 +23,6 @@ int ft_print_conv(char *conv, va_list ap) // парсинг и печать conv
 
 void processing_letter(t_parsing *parsing, va_list ap)
 {
-	
 	if (parsing->letter == 'c' && parsing->size != 2)
 		processing_c(parsing, ap);
 	else if (parsing->letter == 's' && parsing->size != 2)
@@ -38,4 +37,9 @@ void processing_letter(t_parsing *parsing, va_list ap)
 		processing_x(parsing, ap);
 	else if (parsing->letter == 'p')
 		processing_p(parsing, ap);
+	else if (parsing->letter == 'S' || parsing->letter == 'C')
+		processing_unicode(parsing, ap);
+	else if (parsing->size == 2 
+		&& (parsing->letter == 'c' || parsing->letter == 's'))
+		processing_unicode(parsing, ap);
 }

@@ -60,5 +60,4 @@ void processing_p(t_parsing *parsing, va_list ap)
 	str = ft_make_str_p(str, parsing, len, nbr);
 	ft_putstr(str);
 	parsing->len += ft_strlen(str);
-	
 }

@@ -90,11 +90,12 @@ int ft_printf(char *str, ...)
 
 // int main()
 // {
-// 	int *ptr = 0; // не работает с нулевым поинтером
-	
-// 	ft_printf("\n%p", ptr);
-// 	printf("\n%p", ptr);
-// // 	//printf("\nHello, I have % qdqqqq", i);
-// // 	//system ("leaks a.out");
-// 	return(0);
+// 	int x;
+// 	int y;
+
+// 	setlocale(LC_ALL, "");
+// 	x = ft_printf("%S\n", L"莨莨莨");
+// 	y = printf("%S\n", L"莨莨莨");
+// 	printf("\nx = %d, y = %d", x, y);
+// 	return (0);
 // }

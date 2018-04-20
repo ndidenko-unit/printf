@@ -2,10 +2,13 @@
 # define FT_PRINTF_H
 
 #include <stdio.h>
+# include <unistd.h>
 #include <string.h>
 #include <stdarg.h>
+# include <stdlib.h>
 #include "libft/libft.h"
 #include <wchar.h>
+#include <locale.h>
 
 typedef enum    e_size
 {
@@ -78,6 +81,8 @@ char         *ft_x2(char *str, t_parsing *parsing, int len, uintmax_t nbr);
 char         *ft_x3(char *str, t_parsing *parsing, int len);
 
 void processing_p(t_parsing *parsing, va_list ap);
+
+void processing_unicode(t_parsing *parsing, va_list ap);
 
 char	*ft_left(char *s, int width, int precision, char c);
 char	*ft_right(char *s, int width, int precision, char c);
