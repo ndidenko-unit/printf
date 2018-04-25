@@ -30,7 +30,7 @@ static char	*ft_make_unicode(wchar_t n, t_parsing *parsing)
     char *s;
     s = ft_strnew(4);
 
-	if (n <= ft_2to10("01111111") || || (MB_CUR_MAX == 1))
+	if (n <= ft_2to10("01111111") || (MB_CUR_MAX == 1))
 		*s = n;
 	else if (n <= ft_2to10("011111111111"))
 	{
