@@ -46,4 +46,6 @@ void processing_letter(t_parsing *parsing, va_list ap)
 		processing_unicode(parsing, ap);
 	else if (parsing->letter == '%')
 		processing_pct(parsing);
+	else
+		processing_invalid(parsing);
 }

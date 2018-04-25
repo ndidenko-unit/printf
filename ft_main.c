@@ -6,12 +6,12 @@ size_t	    ft_search_conversion_letter(char *str)
 	char    *letter;
 	int x;
 	x = 0;
-	letter = "cCsSpdDioOuUxX%";
+	letter = "cCsSpdDioOuUxX%RZ";
 	i = 1;
 	
 	while (str[i])
 	{
-		if (x == 15)
+		if (x == 17)
 		{
 			x = 0;
 			i++;
@@ -44,6 +44,11 @@ int ft_myprint(char *str, va_list ap)
 		else if (*str == '%')
 		{
 			result_letter = ft_search_conversion_letter(str);
+			if (result_letter == 0)
+				{
+					ft_putstr(str);
+					return(ft_strlen(str) + len);
+				}
 			conv = ft_strsub(str, 0, result_letter);
 			if (ft_validconv(conv) == -1)
 			{
@@ -90,8 +95,9 @@ int ft_printf(char *str, ...)
 // 	int y;
 
 // 	setlocale(LC_ALL, "");
-// 	x = ft_printf("%S\n", L"莨莨莨");
-// 	y = printf("%S\n", L"莨莨莨");
+// 	x = ft_printf("{%30S}", L"我是一只猫。");
+// 	printf("\n");
+// 	y = printf("{%30S}", L"我是一只猫。");
 // 	printf("\nx = %d, y = %d", x, y);
 // 	return (0);
 // }
@@ -100,9 +106,9 @@ int ft_printf(char *str, ...)
 // {
 // 	int i, j = 0;
 // 	int x = 9;
-// 	i = ft_printf("{%10R}");
+// 	i = ft_printf("{%05.s}", 0);
 // 	printf("\n");
-// 	j = printf("{%10R}");
+// 	j = printf("{%05.s}", 0);
 // 	printf("\n i = %d, j = %d\n", i, j);
 // 	return(0);
 // }

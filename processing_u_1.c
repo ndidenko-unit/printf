@@ -1,8 +1,10 @@
 #include "ft_printf.h"
 
-static char        *ft_u1(char *str, uintmax_t nbr)
+static char        *ft_u1(char *str, t_parsing *parsing, uintmax_t nbr)
 {
-	if (nbr == 0)
+	if (nbr == 0 && parsing->precision == 0)
+		return(ft_strdup(""));
+	else if (nbr == 0)
 		return(ft_strdup("0"));
 	else
 		return(str);
@@ -54,7 +56,7 @@ char		*ft_make_str_u(char *str, t_parsing *parsing, uintmax_t nbr)
     res = 0;
     len = ft_strlen(str);
     if (len >= parsing->width && len > parsing->precision)
-        res = ft_u1(str, nbr);
+        res = ft_u1(str, parsing, nbr);
     else if (len <= parsing->width && len > parsing->precision)
         res = ft_u2(str, parsing, len, nbr);
     else if (len <= parsing->width && len <= parsing->precision &&

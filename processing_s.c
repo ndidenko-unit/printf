@@ -1,5 +1,21 @@
 #include "ft_printf.h"
 
+static char*	make_str_s0(t_parsing *parsing, char *str, int len)
+{
+	
+	if (parsing->width == len && parsing->precision == len)
+		return(str);
+	else if (parsing->width <= len && parsing->precision >= len)
+		return(str);
+	else if (parsing->width <= len && parsing->precision <= len)
+		return(ft_right(str, parsing->precision, parsing->precision, '0'));
+	else if (parsing->width > len && (parsing->precision >= len || parsing->precision == 0))
+		return(ft_right(str, parsing->width, len, '0'));
+	else if (parsing->width > len && parsing->precision < len)
+		return(ft_left(str, parsing->width, parsing->precision, '0'));
+	else
+		return(str);
+}
 
 static char*	make_str_s1(t_parsing *parsing, char *str, int len)
 {
@@ -21,8 +37,15 @@ static char*	make_str_s2(t_parsing *parsing, char *str, int len)
 {
 	if (parsing->width == len && parsing->precision == len)
 		return(str);
-	if (parsing->width <= len && parsing->precision >= len)
+	else if (parsing->width <= len && parsing->precision >= len)
 		return(str);
+	else if (parsing->width > 0 && parsing->precision == 0)
+		return(ft_right(str, parsing->width, 0, ' '));
+	else if (parsing->width <= 0 && parsing->precision <= len)
+		return(ft_right(str, parsing->precision, parsing->precision, ' '));
+	else if (parsing->width <= len && parsing->precision <= len 
+				&& parsing->width > parsing->precision)
+		return(ft_right(str, parsing->width, parsing->precision, ' '));
 	else if (parsing->width <= len && parsing->precision <= len)
 		return(ft_right(str, parsing->precision, parsing->precision, ' '));
 	else if (parsing->width > len && (parsing->precision >= len || parsing->precision <= 0))
@@ -51,6 +74,8 @@ void processing_s(t_parsing *parsing, va_list ap)
 	{
 		if (parsing->flag_minus == 1)
 			str = make_str_s1(parsing, str, len);
+		else if (parsing->flag_zero == 1)
+			str = make_str_s0(parsing, str, len);
 		else
 		 	str = make_str_s2(parsing, str, len);
 		len = ft_strlen(str);

@@ -79,13 +79,13 @@ static char	*ft_width_unicode(t_parsing *parsing, char *str)
 	char *res;
 
     if (parsing->width > parsing->len && parsing->flag_zero == 0
-        && parsing->flag_minus == 0 && parsing->precision == 0)
+        && parsing->flag_minus == 0 && parsing->precision <= 0)
 		res = ft_right(str, parsing->width, parsing->len, ' ');
     else if (parsing->width > parsing->len && parsing->flag_zero == 1
-        && parsing->flag_minus == 0 && parsing->precision == 0)
+        && parsing->flag_minus == 0 && parsing->precision <= 0)
 		res = ft_right(str, parsing->width, parsing->len, '0');
     else if (parsing->width > parsing->len && parsing->flag_minus == 1
-        && parsing->precision == 0)
+        && parsing->precision <= 0)
 		res = ft_left(str, parsing->width, parsing->len, ' ');
     else if ((parsing->width >= parsing->len || parsing->width < parsing->len)
         && parsing->flag_zero == 1 && parsing->precision > 0)

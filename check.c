@@ -8,7 +8,7 @@ int ft_validconv(char *conv)
     count = 1;
     while (*conv++)
     {
-        if (ft_strchr("cCsSpdDioOuUxX%hljz#-+ .0123456789", *conv))
+        if (ft_strchr("cCsSpdDioOuUxXRZ%hljz#-+ .0123456789", *conv))
             count++;
         else
             return (count);
@@ -18,7 +18,7 @@ int ft_validconv(char *conv)
 
 int ft_validchar(char *str)
 {
-    if (ft_strchr("cCsSpdDioOuUxX%hljz#-+ .0123456789", *str))
+    if (ft_strchr("cCsSpdDioOuUxXRZ%hljz#-+ .0123456789", *str))
         return (1);
     else
         return (0);

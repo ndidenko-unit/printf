@@ -1,5 +1,33 @@
 #include "ft_printf.h"
 
+static int processing_c_0(int width)
+{
+	int i;
+
+	i = width;
+	while (i != 1)
+	{
+		write(1, " ", 1);
+		i--;
+	}
+	write(1, "\0", 1);
+	return(width);
+}
+
+static int processing_c_0zero(int width)
+{
+	int i;
+
+	i = width;
+	while (i != 1)
+	{
+		write(1, "0", 1);
+		i--;
+	}
+	write(1, "\0", 1);
+	return(width);
+}
+
 void processing_c(t_parsing *parsing, va_list ap)
 {
 	char c;
@@ -15,10 +43,10 @@ void processing_c(t_parsing *parsing, va_list ap)
 		ft_putstr(res);
 		parsing->len += ft_strlen(res);
 	}
-	else if (parsing->width > 0 && c == 0)
-	{
+	else if (parsing->width > 0 && c == 0 && parsing->flag_zero == 0)
 		parsing->len += processing_c_0(parsing->width);
-	}
+	else if (parsing->width > 0 && c == 0 && parsing->flag_zero == 1)
+		parsing->len += processing_c_0zero(parsing->width);
 	else
 	{
 		ft_putchar(c);
@@ -26,16 +54,4 @@ void processing_c(t_parsing *parsing, va_list ap)
 	}
 }
 
-int processing_c_0(int width)
-{
-	int i;
 
-	i = width;
-	while (i != 1)
-	{
-		write(1, " ", 1);
-		i--;
-	}
-	write(1, "\0", 1);
-	return(width);
-}

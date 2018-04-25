@@ -1,6 +1,6 @@
 NAME = libftprintf.a
 
-FILE_C = ft_main.c ft_print_conv.c parsing.c processing_s.c processing_c.c \
+FILE_C = ft_main.c ft_print_conv.c parsing.c processing_s.c processing_c.c processing_invalid.c \
 		left_right.c processing_u.c processing_u_1.c processing_p.c \
 		processing_d.c processing_d_1.c processing_o.c processing_o_1.c \
 		processing_x.c processing_x_1.c processing_x_2.c processing_x_3.c \
