@@ -25,15 +25,15 @@ static char		*ft_make_str_p(char *str, t_parsing *parsing, int len, uintmax_t nb
 {
 	char *res;
 
-	if (parsing->precision == 0 && parsing->width == 0 && nbr == 0)
+	if (parsing->precision <= 0 && parsing->width <= 0 && nbr == 0)
 		res = ft_strjoin("0x", ft_strdup("0"));
-	else if (parsing->precision > 0 && parsing->width == 0 && nbr == 0)
+	else if (parsing->precision > 0 && parsing->width <= 0 && nbr == 0)
 		res = ft_strjoin("0x", ft_right(str, parsing->precision, 0, '0'));
 	else if (parsing->width > 0 && parsing->flag_zero == 1 && 
 						parsing->flag_minus == 0 && nbr == 0)
 		res = ft_strjoin("0x", ft_right(str, parsing->width - 2, 1, '0'));
 	else if (parsing->width > len && len > parsing->precision
-				&& parsing->flag_minus == 0 && nbr != 0)
+				&& parsing->flag_minus == 0)
 		res = ft_right(ft_strjoin("0x", str), parsing->width, len + 2, ' ');
 	else if (parsing->width > len && len > parsing->precision 
 				&& parsing->flag_minus == 1)

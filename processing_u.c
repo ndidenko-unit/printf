@@ -28,7 +28,7 @@ void processing_u(t_parsing *parsing, va_list ap)
 	nbr = ft_cast_u(parsing, ap);
     str = ft_itoa_base(nbr, 10);
 	len = ft_strlen(str);
-    if (parsing->width == 0 && parsing->precision == 0 &&
+    if (parsing->width == -1 && parsing->precision == -1 &&
           parsing->flag_zero == 0 && parsing->flag_minus == 0 && nbr != 0)
          {
              ft_putstr(str);

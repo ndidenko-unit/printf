@@ -28,8 +28,13 @@ char        *ft_d1(char *str, t_parsing *parsing, int len, intmax_t nbr)
         res = ft_right(str, len + 1, len, '+');
     else if (parsing->flag_space == 1 && nbr >= 0)
         res = ft_right(str, len + 1, len, ' ');
-    else if (nbr == 0 && parsing->size != 5)
+    // else if (nbr == 0 && (parsing->size == 1 || parsing->size == 2 
+    //     || parsing->size == 3 || parsing->letter == 'D'))
+    //     res = ft_strdup("0");
+    else if (nbr == 0 && parsing->precision == 0)
         res = ft_strdup("");
+    else if (nbr == 0 && parsing->size != 5)
+        res = ft_strdup("0");
     else
         res = str;
     return(res);
@@ -63,7 +68,7 @@ void processing_d(t_parsing *parsing, va_list ap)
 	nbr = ft_cast_d(parsing, ap);
     str = ft_itoa_max(nbr);
 	len = ft_strlen(str);
-    if (parsing->width == 0 && parsing->precision == 0 &&
+    if (parsing->width == -1 && parsing->precision == -1 &&
          parsing->flag_plus == 0 && parsing->flag_zero == 0 &&
 		 parsing->flag_minus == 0 && parsing->flag_space == 0 && nbr != 0)
          {

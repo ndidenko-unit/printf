@@ -6,7 +6,7 @@ static char        *ft_x1(char *str, t_parsing *parsing, uintmax_t nbr)
 
     if (parsing->flag_sharp == 1 && nbr != 0)
         res = ft_strjoin("0x", str);
-    else if (nbr == 0 && (parsing->precision > 0 || parsing->width > 0))
+    else if (nbr == 0 && parsing->precision >= 0)
         res = ft_strdup("");
     else
         res = str;

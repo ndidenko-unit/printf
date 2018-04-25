@@ -17,15 +17,13 @@ size_t	    ft_search_conversion_letter(char *str)
 			i++;
 		}
 		if (str[i] != letter[x])
-		{
 			x++;
-			continue;
-		}
-		if (str[i] == letter[x])
+		else if (str[i] == letter[x])
 			return(i + 1);
 	}
 	return (0);
 }
+
 
 int ft_myprint(char *str, va_list ap)
 {
@@ -36,26 +34,24 @@ int ft_myprint(char *str, va_list ap)
 	len = 0;
 	while (*str)
 	{
-		if (*str == '%' && *(str + 1) == '%')
-		{
-			ft_putchar('%');
-			len += 1;
-			str += 2;
-			continue;
-		}
-		if (*str != '%') 
+		if (*str == '%' && (ft_validchar(str + 1) == 0 || *(str + 1) == '\0'))
+			str += 1;
+		else if (*str != '%') 
 		{
 			ft_putchar(*str++);
 			len += 1;
-			continue; 
 		}
-		if (*str == '%' && *(str + 1) != '%')
+		else if (*str == '%')
 		{
 			result_letter = ft_search_conversion_letter(str);
 			conv = ft_strsub(str, 0, result_letter);
-			str += (result_letter);
-			len += ft_print_conv(conv, ap);
-			continue;
+			if (ft_validconv(conv) == -1)
+			{
+				str += (result_letter);
+				len += ft_print_conv(conv, ap);
+			}
+			else
+				str += ft_validconv(conv);
 		}
 	}
 	return (len);
@@ -68,8 +64,8 @@ void	ft_struct_init(t_parsing *parsing)
 	parsing->flag_minus = 0;
 	parsing->flag_plus = 0;
 	parsing->flag_space = 0;
-    parsing->width = 0;
-    parsing->precision = 0;
+    parsing->width = -1;
+    parsing->precision = -1;
     parsing->size = -1;
 	parsing->letter = 0;
 	parsing->len = 0;
@@ -98,4 +94,15 @@ int ft_printf(char *str, ...)
 // 	y = printf("%S\n", L"莨莨莨");
 // 	printf("\nx = %d, y = %d", x, y);
 // 	return (0);
+// }
+
+// int main()
+// {
+// 	int i, j = 0;
+// 	int x = 9;
+// 	i = ft_printf("{%10R}");
+// 	printf("\n");
+// 	j = printf("{%10R}");
+// 	printf("\n i = %d, j = %d\n", i, j);
+// 	return(0);
 // }

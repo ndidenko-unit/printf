@@ -46,7 +46,7 @@ void processing_x(t_parsing *parsing, va_list ap)
 	nbr = ft_cast_x(parsing, ap);
     str = ft_itoa_base(nbr, 16);
 	len = ft_strlen(str);
-    if (parsing->width == 0 && parsing->precision == 0 &&
+    if (parsing->width == -1 && parsing->precision == -1 &&
           parsing->flag_zero == 0 && parsing->flag_minus == 0
           && parsing->flag_sharp == 0 && parsing->letter != 'X' && nbr != 0)
          {

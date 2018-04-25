@@ -30,7 +30,7 @@ char         *ft_x2(char *str, t_parsing *parsing, int len, uintmax_t nbr)
 
 	if (parsing->flag_minus == 1 && parsing->flag_sharp == 0)
 		res = ft_left(str, parsing->width, len, ' ');
-    else if (parsing->flag_zero == 1 && parsing->precision == 0 && 
+    else if (parsing->flag_zero == 1 && parsing->precision <= 0 && 
             parsing->flag_minus == 0 && parsing->flag_sharp == 1)
 	{
             char *tmp;
@@ -38,12 +38,12 @@ char         *ft_x2(char *str, t_parsing *parsing, int len, uintmax_t nbr)
 			res = ft_strjoin("0x", tmp);
 			ft_strdel(&tmp);
 	}
-	else if (parsing->flag_zero == 1 && parsing->precision == 0 && 
+	else if (parsing->flag_zero == 1 && parsing->precision <= 0 && 
         parsing->flag_minus == 0 && parsing->flag_sharp == 0)
         res = ft_right(str, parsing->width, len, '0');
 	else if (parsing->flag_sharp == 1)
 		res = ft_x2_2(str, parsing, len, nbr);
-	else if (nbr == 0 && parsing->precision == 0)
+	else if (nbr == 0 && parsing->precision <= 0)
 		res = ft_right(str, parsing->width, 0, ' ');
 	else
 		res = ft_right(str, parsing->width, len, ' ');

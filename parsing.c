@@ -37,6 +37,8 @@ int ft_parse_width(char *conv, t_parsing *parsing)
 	conv += 1;
 	while (ft_valid_flag(*conv))
 		conv++;
+	if (ft_is_digit(*conv) == 0)
+		return(0);
 	ptr = conv;
 	while (ft_is_digit(*conv))
 	{
@@ -46,6 +48,16 @@ int ft_parse_width(char *conv, t_parsing *parsing)
 	width = ft_strsub(ptr, 0, count);
 	parsing->width = ft_atoi(width);
 	return(count); //возвращаем число символов width
+}
+
+void ft_detect_precision(char *conv, t_parsing *parsing)
+{
+	while (*conv)
+	{
+		if (*conv == '.')
+			parsing->precision = 0;
+		conv++;
+	}
 }
 
 int ft_parse_precision(char *conv, t_parsing *parsing)

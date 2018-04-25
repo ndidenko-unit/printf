@@ -118,10 +118,13 @@ void processing_unicode(t_parsing *parsing, va_list ap)
         }
 	else
 	{
-		if (uni_str == 0)
+		if (parsing->letter == 'S' || (parsing->size == 2 && parsing->letter == 's'))
 			str = "(null)";
-		else if (uni_char == 0)
-			str = "\0";
+		else
+		{
+			parsing->len = write(1, "\0", 1);
+			return;
+		}
 	}
 	ft_putstr(str);
 	parsing->len = ft_strlen(str);

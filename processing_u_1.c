@@ -3,7 +3,7 @@
 static char        *ft_u1(char *str, uintmax_t nbr)
 {
 	if (nbr == 0)
-		return(ft_strdup(""));
+		return(ft_strdup("0"));
 	else
 		return(str);
 }
@@ -12,7 +12,7 @@ static char        *ft_u2(char *str, t_parsing *parsing, int len, uintmax_t nbr)
 {
 		if (parsing->flag_minus == 1)
 			return(ft_left(str, parsing->width, len, ' '));
-		else if (parsing->flag_zero == 1 && parsing->precision == 0)
+		else if (parsing->flag_zero == 1 && parsing->precision <= 0)
 			return(ft_right(str, parsing->width, len, '0'));
 		else if (nbr == 0 && parsing->precision == 0)
 			return(ft_right(str, parsing->width, 0, ' '));

@@ -9,7 +9,7 @@ static char*	make_str_s1(t_parsing *parsing, char *str, int len)
 		return(str);
 	else if (parsing->width <= len && parsing->precision <= len)
 		return(ft_left(str, parsing->precision, parsing->precision, ' '));
-	else if (parsing->width > len && (parsing->precision >= len || parsing->precision == 0))
+	else if (parsing->width > len && (parsing->precision >= len || parsing->precision <= 0))
 		return(ft_left(str, parsing->width, len, ' '));
 	else if (parsing->width > len && parsing->precision < len)
 		return(ft_left(str, parsing->width, parsing->precision, ' '));
@@ -25,7 +25,7 @@ static char*	make_str_s2(t_parsing *parsing, char *str, int len)
 		return(str);
 	else if (parsing->width <= len && parsing->precision <= len)
 		return(ft_right(str, parsing->precision, parsing->precision, ' '));
-	else if (parsing->width > len && (parsing->precision >= len || parsing->precision == 0))
+	else if (parsing->width > len && (parsing->precision >= len || parsing->precision <= 0))
 		return(ft_right(str, parsing->width, len, ' '));
 	else if (parsing->width > len && parsing->precision < len)
 		return(ft_right(str, parsing->width, parsing->precision, ' '));
@@ -42,7 +42,7 @@ void processing_s(t_parsing *parsing, va_list ap)
     if (str == 0)
         str = "(null)";
     len = strlen(str);
-	if (parsing->width == 0 && parsing->precision == 0)
+	if (parsing->width <= 0 && parsing->precision <= 0)
 	{
 		ft_putstr(str);
 		parsing->len += len;

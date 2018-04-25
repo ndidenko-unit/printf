@@ -3,15 +3,25 @@
 
 int ft_validconv(char *conv)
 {
- 
-    while (*conv)
+    int count;
+
+    count = 1;
+    while (*conv++)
     {
-        if (ft_strchr("cCsSpdDioOuUxX%hljz#-+ .0123456789", *conv) != 0)
-            conv++;
+        if (ft_strchr("cCsSpdDioOuUxX%hljz#-+ .0123456789", *conv))
+            count++;
         else
-            return (0);
+            return (count);
     }
-    return (1);
+    return (-1);
+}
+
+int ft_validchar(char *str)
+{
+    if (ft_strchr("cCsSpdDioOuUxX%hljz#-+ .0123456789", *str))
+        return (1);
+    else
+        return (0);
 }
 
 int			ft_valid_modifier(char c)

@@ -2,10 +2,10 @@
 
 static char        *ft_o1(char *str, t_parsing *parsing, int len, uintmax_t nbr)
 {
-	if (nbr == 0 && parsing->flag_sharp == 0)
+	if (parsing->flag_sharp == 1 && nbr == 0)
+		return(ft_strdup("0"));
+	else if (nbr == 0 && parsing->precision >= 0)
         return(ft_strdup(""));
-    else if (parsing->flag_sharp == 1 && nbr == 0)
-        return(ft_strdup("0"));
     else if (parsing->flag_sharp == 1 && nbr != 0)
         return(ft_right(str, len + 1, len, '0'));
     else
@@ -45,7 +45,7 @@ static char        *ft_o2(char *str, t_parsing *parsing, int len, uintmax_t nbr)
             return(ft_o2_2(str, parsing, len, nbr));
         else if (parsing->flag_minus == 1 && parsing->flag_sharp == 0)
 			return(ft_left(str, parsing->width, len, ' '));
-		else if (parsing->flag_zero == 1 && parsing->precision == 0)
+		else if (parsing->flag_zero == 1 && parsing->precision <= 0)
             return(ft_right(str, parsing->width, len, '0'));
 		else if (nbr == 0 && parsing->precision == 0)
 			return(ft_right(str, parsing->width, 0, ' '));
