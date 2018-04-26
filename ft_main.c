@@ -6,12 +6,12 @@ size_t	    ft_search_conversion_letter(char *str)
 	char    *letter;
 	int x;
 	x = 0;
-	letter = "cCsSpdDioOuUxX%RZ";
+	letter = "cCsSpdDioOuUxX%rRZAaBbEeFfGgHIJKkLMmNnQqTtVvWwYy";
 	i = 1;
 	
 	while (str[i])
 	{
-		if (x == 17)
+		if (x == 48)
 		{
 			x = 0;
 			i++;
@@ -106,9 +106,9 @@ int ft_printf(char *str, ...)
 // {
 // 	int i, j = 0;
 // 	int x = 9;
-// 	i = ft_printf("{%05.s}", 0);
+// 	i = ft_printf("{%05s}", "abc");
 // 	printf("\n");
-// 	j = printf("{%05.s}", 0);
+// 	j = printf("{%05s}", "abc");
 // 	printf("\n i = %d, j = %d\n", i, j);
 // 	return(0);
 // }
