@@ -23,6 +23,7 @@ static char  *ft_strtoupper(char *str)
 {
 	char *new;
 	char *ptr;
+
 	new = ft_strnew(ft_strlen(str));
 	ptr = new;
 	while(*str)
@@ -61,4 +62,5 @@ void processing_x(t_parsing *parsing, va_list ap)
             ft_putstr(str);
             parsing->len += ft_strlen(str);
         }
+	free(str);
 }

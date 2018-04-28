@@ -56,6 +56,7 @@ char		*ft_make_str_d(char *str, t_parsing *parsing, intmax_t nbr)
         res = ft_d3(str, parsing, len, nbr);
     else if (len <= parsing->precision && parsing->width < parsing->precision)
         res = ft_d4(str, parsing, len, nbr);
+    // free(str); - падает чекер
     return (res);
 }
 
@@ -81,4 +82,5 @@ void processing_d(t_parsing *parsing, va_list ap)
             ft_putstr(str);
             parsing->len += ft_strlen(str);
         }
+    free(str);
 }

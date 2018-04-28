@@ -47,6 +47,7 @@ int ft_parse_width(char *conv, t_parsing *parsing)
 	}
 	width = ft_strsub(ptr, 0, count);
 	parsing->width = ft_atoi(width);
+	free(width);
 	return(count); //возвращаем число символов width
 }
 
@@ -85,6 +86,7 @@ int ft_parse_precision(char *conv, t_parsing *parsing)
 		}
 		precision = ft_strsub(ptr2, 0, count);
 		parsing->precision = ft_atoi(precision);
+		free(precision);
 	}
 	return(0);
 }

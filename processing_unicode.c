@@ -57,20 +57,24 @@ static char	*ft_make_unicode(wchar_t n, t_parsing *parsing)
 static char	*ft_make_str_unicode(t_parsing *parsing, wchar_t *uni_str, wchar_t uni_char)
 {
 	char *str;
+	char *tmp;
 
 	str = ft_strdup("");
 	if (parsing->letter == 'S' || (parsing->size == 2 && parsing->letter == 's'))
 	{
 		while (*uni_str)
 		{
-			str = ft_strjoin(str, ft_make_unicode(*uni_str, parsing));
+			tmp = ft_make_unicode(*uni_str, parsing);
+			str = ft_strjoin(str, tmp);
 			uni_str++;
+			free(tmp);
 		}
 	}
 	else
 	{
 		str = ft_strdup(ft_make_unicode(uni_char, parsing));
 	}
+
 	return (str);
 }
 
@@ -96,6 +100,7 @@ static char	*ft_width_unicode(t_parsing *parsing, char *str)
 	else
 		res = ft_strdup(str);
     parsing->len = ft_strlen(res);
+  	free(str);
 	return (res);
 }
 
@@ -128,4 +133,6 @@ void processing_unicode(t_parsing *parsing, va_list ap)
 	}
 	ft_putstr(str);
 	parsing->len = ft_strlen(str);
+			system ("leaks -quiet a.out");
+
 }

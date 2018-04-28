@@ -46,5 +46,6 @@ char		*ft_make_str_x(char *str, t_parsing *parsing, uintmax_t nbr)
         res = ft_x3(str, parsing, len);
     else if (len <= parsing->precision && parsing->width < parsing->precision)
         res = ft_x4(str, parsing, len, nbr);
+    //free(str); - падает чекер
     return (res);
 }

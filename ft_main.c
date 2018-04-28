@@ -25,10 +25,31 @@ size_t	    ft_search_conversion_letter(char *str)
 }
 
 
-int ft_myprint(char *str, va_list ap)
+static void ft_myprint2(char **str, int *len, va_list ap)
 {
 	char *conv;
 	size_t result_letter;
+
+	result_letter = ft_search_conversion_letter(*str);
+	if (result_letter == 0)
+		{
+			ft_putstr(*str);
+			len = (ft_strlen(*str) + len);
+		}
+	conv = ft_strsub(*str, 0, result_letter);
+	if (ft_validconv(conv) == -1)
+	{
+		*str += (result_letter);
+		*len += ft_print_conv(conv, ap);
+	}
+	else
+		*str += ft_validconv(conv);
+	ft_strdel(&conv);
+}
+
+int ft_myprint(char *str, va_list ap)
+{
+
 	int len;
 
 	len = 0;
@@ -43,20 +64,7 @@ int ft_myprint(char *str, va_list ap)
 		}
 		else if (*str == '%')
 		{
-			result_letter = ft_search_conversion_letter(str);
-			if (result_letter == 0)
-				{
-					ft_putstr(str);
-					return(ft_strlen(str) + len);
-				}
-			conv = ft_strsub(str, 0, result_letter);
-			if (ft_validconv(conv) == -1)
-			{
-				str += (result_letter);
-				len += ft_print_conv(conv, ap);
-			}
-			else
-				str += ft_validconv(conv);
+			ft_myprint2(&str, &len, ap);
 		}
 	}
 	return (len);
@@ -101,14 +109,24 @@ int ft_printf(char *str, ...)
 // 	printf("\nx = %d, y = %d", x, y);
 // 	return (0);
 // }
-
 // int main()
 // {
 // 	int i, j = 0;
-// 	int x = 9;
-// 	i = ft_printf("{%05s}", "abc");
+
+// 	i = ft_printf("\n");
+
 // 	printf("\n");
-// 	j = printf("{%05s}", "abc");
+
+// 	j = printf("\n");
+
 // 	printf("\n i = %d, j = %d\n", i, j);
+
 // 	return(0);
+// }
+
+
+// int main()
+// {
+// 	ft_printf("%S\n", L"ݗݜशব");
+// 	return 0;
 // }
