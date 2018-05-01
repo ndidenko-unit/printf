@@ -42,7 +42,7 @@ void processing_x(t_parsing *parsing, va_list ap)
 {
     uintmax_t	nbr;
     char *str;
-    size_t len;
+	size_t len;
 
 	nbr = ft_cast_x(parsing, ap);
     str = ft_itoa_base(nbr, 16);
@@ -57,10 +57,10 @@ void processing_x(t_parsing *parsing, va_list ap)
     else
         {
             str = ft_make_str_x(str, parsing, nbr);
-            if (parsing->letter == 'X')
-                str = ft_strtoupper(str);
+			if (parsing->letter == 'X')
+				str = ft_strtoupper(str);
             ft_putstr(str);
-            parsing->len += ft_strlen(str);
+			parsing->len += ft_strlen(str);
         }
 	free(str);
 }

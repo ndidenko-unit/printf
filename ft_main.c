@@ -103,12 +103,14 @@ int ft_printf(char *str, ...)
 // 	int y;
 
 // 	setlocale(LC_ALL, "");
-// 	x = ft_printf("{%30S}", L"我是一只猫。");
+// 	x = ft_printf("%#X\n", 1000);
 // 	printf("\n");
-// 	y = printf("{%30S}", L"我是一只猫。");
+// 	y = printf("%#X\n", 1000);
 // 	printf("\nx = %d, y = %d", x, y);
+// 	system ("leaks a.out");
 // 	return (0);
 // }
+
 // int main()
 // {
 // 	int i, j = 0;

@@ -12,6 +12,7 @@ void processing_pct(t_parsing *parsing)
     else
         res = ft_right("%", parsing->width, 1, ' ');
     ft_putstr(res);
-	parsing->len += ft_strlen(res);
+    parsing->len += ft_strlen(res);
+    free(res);
     
 }

@@ -5,7 +5,10 @@ static char        *ft_x1(char *str, t_parsing *parsing, uintmax_t nbr)
     char *res;
 
     if (parsing->flag_sharp == 1 && nbr != 0)
-        res = ft_strjoin("0x", str);
+        {
+            res = ft_strjoin("0x", str);
+            free(str);
+        }
     else if (nbr == 0 && parsing->precision >= 0)
         res = ft_strdup("");
     else
@@ -23,7 +26,7 @@ static char         *ft_x4(char *str, t_parsing *parsing, int len, uintmax_t nbr
         res = ft_right(str, parsing->precision, len, '0');
         tmp = res;
         res = ft_strjoin("0x", tmp);
-        ft_strdel(&tmp);
+        free(tmp);
     }
     else
         res = ft_right(str, parsing->precision, len, '0');

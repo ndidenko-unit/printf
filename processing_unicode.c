@@ -58,6 +58,7 @@ static char	*ft_make_str_unicode(t_parsing *parsing, wchar_t *uni_str, wchar_t u
 {
 	char *str;
 	char *tmp;
+	char *tmp2;
 
 	str = ft_strdup("");
 	if (parsing->letter == 'S' || (parsing->size == 2 && parsing->letter == 's'))
@@ -65,16 +66,19 @@ static char	*ft_make_str_unicode(t_parsing *parsing, wchar_t *uni_str, wchar_t u
 		while (*uni_str)
 		{
 			tmp = ft_make_unicode(*uni_str, parsing);
+			tmp2 = str;
 			str = ft_strjoin(str, tmp);
 			uni_str++;
 			free(tmp);
+			free(tmp2);
 		}
 	}
 	else
 	{
-		str = ft_strdup(ft_make_unicode(uni_char, parsing));
+		tmp = str;
+		str = ft_make_unicode(uni_char, parsing);
+		free(tmp);
 	}
-
 	return (str);
 }
 
@@ -100,7 +104,7 @@ static char	*ft_width_unicode(t_parsing *parsing, char *str)
 	else
 		res = ft_strdup(str);
     parsing->len = ft_strlen(res);
-  	free(str);
+	free(str);
 	return (res);
 }
 
@@ -108,10 +112,10 @@ void processing_unicode(t_parsing *parsing, va_list ap)
 {
     wchar_t *uni_str;
     wchar_t uni_char;
-    char *str;
+	char *str;
 
     uni_char = 0;
-    uni_str = 0;
+	uni_str = 0;
     if (parsing->letter == 'S' || (parsing->size == 2 && parsing->letter == 's'))
         uni_str = va_arg(ap, wchar_t*);
     else if (parsing->letter == 'C' || (parsing->size == 2 && parsing->letter == 'c'))
@@ -119,20 +123,19 @@ void processing_unicode(t_parsing *parsing, va_list ap)
     if (uni_char != 0 || uni_str != 0)
         {
             str = ft_make_str_unicode(parsing, uni_str, uni_char);
-            str = ft_width_unicode(parsing, str);
+			str = ft_width_unicode(parsing, str);
+			ft_putstr(str);
+			parsing->len = ft_strlen(str);
+			free(str);
         }
 	else
 	{
 		if (parsing->letter == 'S' || (parsing->size == 2 && parsing->letter == 's'))
-			str = "(null)";
+			parsing->len = write(1, "(null)", 6);
 		else
 		{
 			parsing->len = write(1, "\0", 1);
 			return;
 		}
 	}
-	ft_putstr(str);
-	parsing->len = ft_strlen(str);
-			system ("leaks -quiet a.out");
-
 }
