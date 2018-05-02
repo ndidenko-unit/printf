@@ -25,16 +25,22 @@ char        *ft_d1(char *str, t_parsing *parsing, int len, intmax_t nbr)
 
     if ((parsing->flag_plus == 1 && nbr >= 0) ||
     (parsing->flag_plus == 1 && parsing->flag_space == 1 && nbr >= 0))
+    {
         res = ft_right(str, len + 1, len, '+');
+        free(str);
+    }
     else if (parsing->flag_space == 1 && nbr >= 0)
+    {
         res = ft_right(str, len + 1, len, ' ');
-    // else if (nbr == 0 && (parsing->size == 1 || parsing->size == 2 
-    //     || parsing->size == 3 || parsing->letter == 'D'))
-    //     res = ft_strdup("0");
+        free(str);
+    }
     else if (nbr == 0 && parsing->precision == 0)
         res = ft_strdup("");
     else if (nbr == 0 && parsing->size != 5)
+    {
         res = ft_strdup("0");
+        free(str);
+    }
     else
         res = str;
     return(res);
@@ -56,7 +62,8 @@ char		*ft_make_str_d(char *str, t_parsing *parsing, intmax_t nbr)
         res = ft_d3(str, parsing, len, nbr);
     else if (len <= parsing->precision && parsing->width < parsing->precision)
         res = ft_d4(str, parsing, len, nbr);
-    // free(str); - падает чекер
+    //free(str);
+   
     return (res);
 }
 
@@ -65,6 +72,7 @@ void processing_d(t_parsing *parsing, va_list ap)
     intmax_t	nbr;
     char *str;
     size_t len;
+    char *res;
 
 	nbr = ft_cast_d(parsing, ap);
     str = ft_itoa_max(nbr);
@@ -75,12 +83,14 @@ void processing_d(t_parsing *parsing, va_list ap)
          {
              ft_putstr(str);
              parsing->len += len;
+             free(str);
          }
     else
         {
-            str = ft_make_str_d(str, parsing, nbr);
-            ft_putstr(str);
-            parsing->len += ft_strlen(str);
+            res = ft_make_str_d(str, parsing, nbr);
+            ft_putstr(res);
+            parsing->len += ft_strlen(res);
+            if (res != str)
+               free(res);
         }
-    free(str);
 }

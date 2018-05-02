@@ -41,4 +41,5 @@ void processing_o(t_parsing *parsing, va_list ap)
             ft_putstr(str);
             parsing->len += ft_strlen(str);
         }
+    free(str);
 }

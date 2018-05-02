@@ -103,10 +103,11 @@ int ft_printf(char *str, ...)
 // 	int y;
 
 // 	setlocale(LC_ALL, "");
-// 	x = ft_printf("%#X\n", 1000);
-// 	printf("\n");
-// 	y = printf("%#X\n", 1000);
-// 	printf("\nx = %d, y = %d", x, y);
+// 	// x = ft_printf("%-10.5d", 4242);
+// 	// printf("\n");
+// 	// y = printf("%-10.5d", 4242);
+// 	// printf("\nx = %d, y = %d", x, y);
+// 	ft_printf("%p\n", &ft_printf);
 // 	system ("leaks a.out");
 // 	return (0);
 // }

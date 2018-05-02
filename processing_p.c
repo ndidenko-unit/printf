@@ -45,7 +45,10 @@ static char		*ft_make_str_p(char *str, t_parsing *parsing, int len, uintmax_t nb
 			res = ft_left(res, parsing->width, len + 2, ' ');
 	}
 	else
+	{
 		res = ft_make_str_p2(str, parsing, len, nbr);
+		free(str);
+	}
 	return (res);
 }
 
@@ -62,4 +65,5 @@ void processing_p(t_parsing *parsing, va_list ap)
 	str = ft_make_str_p(str, parsing, len, nbr);
 	ft_putstr(str);
 	parsing->len += ft_strlen(str);
+	free(str);
 }

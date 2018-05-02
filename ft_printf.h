@@ -1,12 +1,10 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdio.h>
-# include <unistd.h>
+#include <unistd.h>
 #include <string.h>
 #include <stdarg.h>
-# include <stdlib.h>
-#include "libft/libft.h"
+#include <stdlib.h>
 #include <wchar.h>
 #include <locale.h>
 
@@ -90,5 +88,20 @@ void processing_invalid(t_parsing *parsing);
 
 char	*ft_left(char *s, int width, int precision, char c);
 char	*ft_right(char *s, int width, int precision, char c);
+
+void	*ft_memalloc(size_t size);
+void	*ft_memset(void *destination, int c, size_t n);
+void	ft_putchar(char c);
+void	ft_putstr(char const *s);
+char	*ft_strcat(char *dest, const char *src);
+char	*ft_strchr(const char *str, int c);
+char	*ft_strcpy(char *cpyto, const char *src);
+void	ft_strdel(char **as);
+char	*ft_strdup(const char *string);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t		ft_strlen(const char *s);
+char	*ft_strnew(size_t size);
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+int			ft_atoi(const char *str);
 
 #endif
